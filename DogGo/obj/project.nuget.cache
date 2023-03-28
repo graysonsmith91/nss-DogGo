@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EO8attKlsj7D6RrM4NLt7o7NVqDl5eRPDOAYtFGOHwS9I3Rkk9I+FHWk9Wpgt/6OAiYKMGVVAjrYRlPNxdgimQ==",
+  "dgSpecHash": "UrIfkaKAyk2zug9UIdQGyFC8UuskGC710lHZqLzbGhLuLwZk/Fgxzx5t/QtDknAA+1bnhd28Uq9uLnqi6Ns8nA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\grays\\source\\repos\\DogGo\\DogGo\\DogGo.csproj",
+  "projectFilePath": "C:\\Users\\grays\\workspace\\csharp\\DogGo\\DogGo\\DogGo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\grays\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\grays\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
