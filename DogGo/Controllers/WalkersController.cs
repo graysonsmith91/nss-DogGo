@@ -1,19 +1,25 @@
-﻿using DogGo.Models;
+﻿using DogGo.Interfaces;
+using DogGo.Models;
+using DogGo.Models.ViewModels;
 using DogGo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DogGo.Controllers
 {
     public class WalkersController : Controller
     {
         private readonly IWalkerRepository _walkerRepo;
+        private readonly IWalkRepository _walkRepo;
 
         // ASP.NET will give us an instance of our Walker Repository. This is called "Dependency Injection"
-        public WalkersController(IWalkerRepository walkerRepository)
+        public WalkersController(IWalkerRepository walkerRepository, IWalkRepository walkRepository)
         {
             _walkerRepo = walkerRepository;
+            _walkRepo = walkRepository;
         }
 
         // GET: WalkersController
@@ -28,13 +34,32 @@ namespace DogGo.Controllers
         public ActionResult Details(int id)
         {
             Walker walker = _walkerRepo.GetWalkerById(id);
+            List<Walk> walks = _walkRepo.GetWalksByWalkerId(walker.Id).OrderBy(w => w.Dog.Name).ToList();
+
+            int totalWalkTime = 0;
+            foreach(Walk walk in walks)
+            {
+
+                totalWalkTime += walk.Duration;
+            };
 
             if (walker == null)
             {
                 return NotFound();
             }
 
-            return View(walker);
+            TimeSpan time = TimeSpan.FromSeconds(totalWalkTime);
+            string hoursMinutes = time.ToString(@"hh\:mm");
+
+            walker.HoursMinutes = hoursMinutes;
+
+            WalkerDetailsViewModel viewModel = new WalkerDetailsViewModel()
+            {
+                Walker = walker,
+                Walks = walks,
+            };
+
+            return View(viewModel);
         }
 
         // GET: WalkersController/Create
