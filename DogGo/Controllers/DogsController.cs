@@ -40,6 +40,7 @@ namespace DogGo.Controllers
             return View(dog);
         }
 
+        // GET: Dogs/Create
         public ActionResult Create()
         {
             return View();
@@ -52,6 +53,9 @@ namespace DogGo.Controllers
         {
             try
             {
+                // update the dogs OwnerId to the current user's Id
+                dog.OwnerId = GetCurrentUserId();
+
                 _dogRepo.AddDog(dog);
 
                 return RedirectToAction("Index");
