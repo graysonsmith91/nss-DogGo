@@ -900,3 +900,4 @@ C:\Users\grays\workspace\csharp\DogGo\DogGo\obj\Debug\net5.0\refint\DogGo.dll
 C:\Users\grays\workspace\csharp\DogGo\DogGo\obj\Debug\net5.0\DogGo.pdb
 C:\Users\grays\workspace\csharp\DogGo\DogGo\obj\Debug\net5.0\DogGo.genruntimeconfig.cache
 C:\Users\grays\workspace\csharp\DogGo\DogGo\obj\Debug\net5.0\ref\DogGo.dll
+C:\Users\grays\workspace\csharp\DogGo\DogGo\obj\Debug\net5.0\Razor\Views\Owners\Login.cshtml.g.cs
