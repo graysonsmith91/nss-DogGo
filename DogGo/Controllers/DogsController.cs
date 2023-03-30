@@ -1,6 +1,7 @@
 ﻿using DogGo.Interfaces;
 using DogGo.Models;
 using DogGo.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,7 @@ namespace DogGo.Controllers
             _dogRepo = dogRepository;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             int ownerId = GetCurrentUserId();
@@ -41,12 +43,14 @@ namespace DogGo.Controllers
         }
 
         // GET: Dogs/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Dogs/Create
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Dog dog)
