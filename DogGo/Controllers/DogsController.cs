@@ -24,6 +24,7 @@ namespace DogGo.Controllers
         public ActionResult Index()
         {
             int ownerId = GetCurrentUserId();
+            // if statements check for id is 0 then return certain views? can change method above to return 0
 
             List<Dog> dogs = _dogRepo.GetDogsByOwnerId(ownerId);
 
@@ -73,15 +74,19 @@ namespace DogGo.Controllers
         // GET: Dogs/Edit/5
         public ActionResult Edit(int id)
         {
+            int ownerId = GetCurrentUserId();
+
             Dog dog = _dogRepo.GetDogById(id);
 
-            if (dog == null)
+            if (dog == null || dog.OwnerId != ownerId)
             {
                 return NotFound();
             }
 
             return View(dog);
         }
+        // This works above I think 
+
 
         // POST: Dogs/Edit/5
         [HttpPost]
@@ -103,7 +108,14 @@ namespace DogGo.Controllers
         // GET: Dogs/Delete/5
         public ActionResult Delete(int id)
         {
+            int ownerId = GetCurrentUserId();
+
             Dog dog = _dogRepo.GetDogById(id);
+
+            if (dog.OwnerId != ownerId)
+            {
+                return NotFound();
+            }
 
             return View(dog);
         }
