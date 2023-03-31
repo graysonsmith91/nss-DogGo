@@ -24,7 +24,6 @@ namespace DogGo.Controllers
         public ActionResult Index()
         {
             int ownerId = GetCurrentUserId();
-            // if statements check for id is 0 then return certain views? can change method above to return 0
 
             List<Dog> dogs = _dogRepo.GetDogsByOwnerId(ownerId);
 
@@ -85,7 +84,6 @@ namespace DogGo.Controllers
 
             return View(dog);
         }
-        // This works above I think 
 
 
         // POST: Dogs/Edit/5

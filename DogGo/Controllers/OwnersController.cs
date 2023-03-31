@@ -55,7 +55,6 @@ namespace DogGo.Controllers
             return View(vm);
         }
 
-        // GET: OwnersController/Create
         // GET: Owners/Create
         public ActionResult Create()
         {
