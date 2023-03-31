@@ -27,27 +27,11 @@
             <h1 class="text-left">Walks</h1>
 
             <table class="table">
-                @*<thead>
-                    <tr>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Neighborhood)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ImageUrl)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>*@
                 <tbody>
-                    
                     @foreach (Walk walk in Model.Walks)
                     {
                         <li class="list-group-item disabled" aria-disabled="true">
-                            <span class="font-weight-bold ml-4">@walk.Date</span>
+                            <span class="font-weight-bold ml-4">@Html.DisplayFor(m => walk.Date)</span>
                             <span class="font-weight-bold ml-4">@walk.Dog.Name</span>
                             @{
                                 int durationInSeconds = walk.Duration;
@@ -58,22 +42,10 @@
                     }
                 </tbody>
             </table>
-            @*<div class="row">
-                <ul class="list-group mt-4">
-                    @foreach (Walk walk in Model.Walks)
-                    {
-                        <li class="list-group-item disabled" aria-disabled="true">
-                            <span class="font-weight-bold ml-4">@walk.Date</span>
-                        </li>
-                    }
-                </ul>
-            </div>*@
         </section>
-
         <section class="col-lg-4 col-md-8 container mt-5">
             <h1>Total Walk Time</h1>
                 <div>@Model.Walker.HoursMinutes minutes</div>
-            
         </section>
     </div>
 </div>
